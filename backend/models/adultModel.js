@@ -43,6 +43,24 @@ const adultSchema = mongoose.Schema({
     type: Number,
     required: true
   },
+  courses: [
+    {
+      course: {
+        type: mongoose.Schema.Types.ObjectId,
+        required: true,
+        ref: 'Course'
+      }
+    }
+  ],
+  articles: [
+    {
+      article: {
+        type: mongoose.Schema.Types.ObjectId,
+        required: true,
+        ref: 'Article'
+      }
+    }
+  ],
   isAdmin: {
     type: Boolean,
     required: true,

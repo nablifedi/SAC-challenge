@@ -26,7 +26,25 @@ const kidSchema = mongoose.Schema({
   gender: {
     type: String,
     required: true
-  }
+  },
+  courses: [
+    {
+      course: {
+        type: mongoose.Schema.Types.ObjectId,
+        required: true,
+        ref: 'Course'
+      }
+    }
+  ],
+  articles: [
+    {
+      article: {
+        type: mongoose.Schema.Types.ObjectId,
+        required: true,
+        ref: 'Article'
+      }
+    }
+  ]
 }, {
   timestamps: true
 })
