@@ -5,6 +5,7 @@ import colors from 'colors'
 import {notFound, errorHandler} from './middleware/errorMiddleware.js'
 import uploadRoutes from './routes/uploadRoutes.js'
 import videoUploadRoutes from './routes/videoUploadRoutes.js'
+import articleUploadRoutes from './routes/articleUploadRoutes.js'
 
 dotenv.config()
 const app = express()
@@ -12,10 +13,12 @@ app.use(express.json())
 
 app.use('/api/upload', uploadRoutes)
 app.use('/api/video', videoUploadRoutes)
+app.use('/api/article', articleUploadRoutes)
 
 const __dirname = path.resolve()
 app.use('/uploads', express.static(path.join(__dirname, '/uploads')))
 app.use('/videos', express.static(path.join(__dirname, '/videos')))
+app.use('/articles', express.static(path.join(__dirname, '/articles')))
 
 app.get('/', (req, res) => {
   res.send('API is running')

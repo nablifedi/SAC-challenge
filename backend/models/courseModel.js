@@ -1,6 +1,6 @@
 import mongoose from 'mongoose'
 
-const articleSchema = mongoose.Schema({
+const courseSchema = mongoose.Schema({
   name: {
     type: String,
     required: true
@@ -15,17 +15,17 @@ const articleSchema = mongoose.Schema({
   },
   instructorName: {
     type: String,
-    required: true
+    required: required
   },
-  articles: [
+  videos: [
     {
-      article: {
+      video: {
         type: String,
         required: true
       }
     }
   ],
-  readingTime: {
+  watchTime: {
     type: Number,
     required: true
   }
@@ -33,6 +33,6 @@ const articleSchema = mongoose.Schema({
   timestamps: true
 })
 
-const Article = mongoose.model('Article', articleSchema)
+const Course = mongoose.model('Course', courseSchema)
 
-export default Article
+export default Course
