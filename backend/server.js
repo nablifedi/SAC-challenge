@@ -3,10 +3,15 @@ import express from 'express'
 import dotenv from 'dotenv'
 import colors from 'colors'
 import {notFound, errorHandler} from './middleware/errorMiddleware.js'
+import uploadRoutes from './routes/uploadRoutes.js'
+import videoUploadRoutes from './routes/videoUploadRoutes.js'
 
 dotenv.config()
 const app = express()
 app.use(express.json())
+
+app.use('/api/upload', uploadRoutes)
+app.use('/api/video', videoUploadRoutes)
 
 const __dirname = path.resolve()
 app.use('/uploads', express.static(path.join(__dirname, '/uploads')))
