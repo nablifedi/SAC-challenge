@@ -33,6 +33,14 @@ const kidSchema = mongoose.Schema({
         type: mongoose.Schema.Types.ObjectId,
         required: true,
         ref: 'Course'
+      },
+      name: {
+        type: String,
+        required: true
+      },
+      joinedDate: {
+        type: Date,
+        required: true
       }
     }
   ],
@@ -42,6 +50,14 @@ const kidSchema = mongoose.Schema({
         type: mongoose.Schema.Types.ObjectId,
         required: true,
         ref: 'Article'
+      },
+      name: {
+        type: String,
+        required: true
+      },
+      joinedDate: {
+        type: Date,
+        required: true
       }
     }
   ]
