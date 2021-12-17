@@ -65,6 +65,25 @@ const registerKid = asyncHandler(async (req, res) => {
   }
 })
 
+const getKidProfile = asyncHandler(async(req, res) => {
+  const kid = await Kid.findById(req.user._id)
+  if (kid) {
+    res.json({
+      _id: kid._id,
+      email: kid.email,
+      firstName: kid.firstName,
+      lastName: kid.lastName,
+      age: kid.age,
+      gender: kid.gender,
+      courses: kid.courses,
+      articles: kid.articles
+    })
+  } else {
+    res.status(404)
+    throw new Error('User not found')
+  }
+})
+
 const updateKidProfile = asyncHandler(async (req, res) => {
   const kid = await Kid.findById(req.user._id)
   if (kid) {
@@ -232,6 +251,7 @@ const addArticle = asyncHandler(async (req, res) => {
 export {
   authKid,
   registerKid,
+  getKidProfile,
   updateKidProfile,
   getKids,
   deleteKid,

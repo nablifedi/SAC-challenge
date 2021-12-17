@@ -3,6 +3,11 @@ import express from 'express'
 import dotenv from 'dotenv'
 import colors from 'colors'
 import {notFound, errorHandler} from './middleware/errorMiddleware.js'
+import kidRoutes from './routes/kidRoutes.js'
+import adultRoutes from './routes/adultRoutes.js'
+import jobRoutes from './routes/jobRoutes.js'
+import articleRoutes from './routes/articleRoutes.js'
+import courseRoutes from './routes/courseRoutes.js'
 import uploadRoutes from './routes/uploadRoutes.js'
 import videoUploadRoutes from './routes/videoUploadRoutes.js'
 import articleUploadRoutes from './routes/articleUploadRoutes.js'
@@ -11,6 +16,11 @@ dotenv.config()
 const app = express()
 app.use(express.json())
 
+app.use('/api/kids', kidRoutes)
+app.use('/api/adults', adultRoutes)
+app.use('/api/jobs', jobRoutes)
+app.use('/api/articles', articleRoutes)
+app.use('/api/courses', courseRoutes)
 app.use('/api/upload', uploadRoutes)
 app.use('/api/video', videoUploadRoutes)
 app.use('/api/article', articleUploadRoutes)

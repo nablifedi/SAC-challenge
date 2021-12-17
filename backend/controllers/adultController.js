@@ -81,6 +81,29 @@ const registerAdult = asyncHandler(async (req, res) => {
   }
 })
 
+const getAdultProfile = asyncHandler(async(req, res) => {
+  const adult = await Adult.findById(req.user._id)
+  if (adult) {
+    res.json({
+      _id: adult._id,
+      email: adult.email,
+      firstName: adult.firstName,
+      lastName: adult.lastName,
+      age: adult.age,
+      gender: adult.gender,
+      cin: adult.cin,
+      address: adult.address,
+      profession: adult.profession,
+      phoneNumber: adult.phoneNumber,
+      courses: adult.courses,
+      articles: adult.articles
+    })
+  } else {
+    res.status(404)
+    throw new Error('User not found')
+  }
+})
+
 const updateAdultProfile = asyncHandler(async (req, res) => {
   const adult = await Adult.findById(req.user._id)
   if (Adult) {
@@ -257,6 +280,7 @@ const addArticle = asyncHandler(async (req, res) => {
 export {
   authAdult,
   registerAdult,
+  getAdultProfile,
   updateAdultProfile,
   getAdults,
   deleteAdult,
