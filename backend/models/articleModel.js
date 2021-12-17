@@ -22,6 +22,10 @@ const articleSchema = mongoose.Schema({
       article: {
         type: String,
         required: true
+      },
+      name: {
+        tyep: String,
+        required: true
       }
     }
   ],
